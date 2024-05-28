@@ -1,0 +1,28 @@
+{
+  "service_codes": [
+    {
+      "code": "1",
+      "label":"系统级错误",
+      "desc":"1 为系统级错误"
+    },
+    {
+      "code": "2",
+      "label":"普通错误",
+      "desc":"2 为普通错误，通常是由用户非法操作引起"
+    }
+  ],
+  "module_codes": [
+    {
+      "code": "01",
+      "label":"用户模块",
+      "desc":"01 为用户模块"
+    },
+    {
+      "code": "02",
+      "label":"订单模块",
+      "desc":"02 为订单模块"
+    }
+  ],
+  "file_path": "./errors.proto",
+  "i18n": ["default","English"]
+}

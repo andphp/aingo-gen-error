@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package errcode;
+
+option go_package = "err/errcode";
+import "errors/errors.proto";
+
+enum ErrorCode {
+  SUCCESS = 0 [(errors.msg) = "请求成功", (errors.msg_english) = "request successful"];
+
+  UNKNOWN = 100000 [(errors.msg) = "未知错误", (errors.msg_english) = "unknown error"];
+  VALIDATION_FAIL = 100001 [(errors.msg) = "Token 验证失败，可能已过期或者在黑名单", (errors.msg_english) = "token validation failed, might be expired or blacklisted"];
+  LOGIN_ERROR = 100002 [(errors.msg) = "用户不存在或密码不正确", (errors.msg_english) = "user does not exist or password incorrect"];
+  ACCESS_DENIED = 100003 [(errors.msg) = "拒绝非法访问", (errors.msg_english) = "access denied"];
+  API_AUTH_FAIL = 100004 [(errors.msg) = "接口鉴权失败", (errors.msg_english) = "API authentication failed"];
+
+  EDDRR = 101001 [(errors.msg_english) = "dw", (errors.msg) = "D得到"];
+  SDEER = 101002 [(errors.msg_english) = "d", (errors.msg) = "dd"];
+  DDD = 101003 [(errors.msg_english) = "", (errors.msg) = "s"];
+
+  EEEDD_DD = 202001 [(errors.msg_english) = "dd", (errors.msg) = "Sdd dd"];
+  DDSFD = 202002 [(errors.msg_english) = "d", (errors.msg) = "dd"];
+  SDFDFDD = 202003 [(errors.msg_english) = "d", (errors.msg) = "dd"];
+  EDDDDD = 202004 [(errors.msg_english) = "d", (errors.msg) = "dsssd"];
+
+  // API Parameter Validation Errors (4xxxxx)
+  INVALID_PARAMS = 400001 [(errors.msg) = "请求参数错误", (errors.msg_english) = "request parameter error"];
+  NO_TOKEN = 400002 [(errors.msg) = "Token 不合法或者不存在", (errors.msg_english) = "token is invalid or does not exist"];
+  CODE_ERROR = 400003 [(errors.msg) = "验证码错误或已失效", (errors.msg_english) = "verification code error or expired"];
+  NOT_ALLOW_METHOD = 400004 [(errors.msg) = "资源未找到或不允许访问的资源", (errors.msg_english) = "method [:method] not allowed for accessing resource"];
+  UPLOAD_IMAGE_VERIFICATION_FAIL = 400005 [(errors.msg) = "图片上传验证不通过", (errors.msg_english) = "image upload verification failed"];
+  UPLOAD_FILE_VERIFICATION_FAIL = 400006 [(errors.msg) = "文件上传验证不通过", (errors.msg_english) = "file upload verification failed"];
+
+  // Business Logic Validation Errors (5xxxxx)
+  LOGIN_FAILURE = 500001 [(errors.msg) = "用户名不存在或者密码错误!", (errors.msg_english) = "The username does not exist or the password is incorrect"];
+  USER_BAN = 500002 [(errors.msg) = "用户被禁用", (errors.msg_english) = "user is banned"];
+  NO_PERMISSION = 500003 [(errors.msg) = "无权限访问", (errors.msg_english) = "no permission to access"];
+  DIRECTORY_NO_DELETE = 500004 [(errors.msg) = "非空目录，不可删除", (errors.msg_english) = "non-empty directory, cannot delete"];
+  QUEUE_MISSING_CONTENT = 500005 [(errors.msg) = "队列消息缺少消息内容", (errors.msg_english) = "queue message missing content"];
+  API_STOP = 500006 [(errors.msg) = "接口已停用", (errors.msg_english) = "API has been discontinued"];
+
+}
